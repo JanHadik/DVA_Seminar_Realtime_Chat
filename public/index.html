@@ -1,0 +1,60 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Realtime Chat</title>
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            margin: 0;
+            padding: 1rem;
+        }
+
+        #messages {
+            list-style: none;
+            padding: 0;
+            max-height: 60vh;
+            overflow-y: auto;
+            border: 1px solid #ddd;
+            margin-bottom: 1rem;
+        }
+
+        #messages li {
+            padding: 0.5rem;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        #form {
+            display: flex;
+            gap: .5rem;
+        }
+
+        #name {
+            width: 20%;
+        }
+
+        #m {
+            flex: 1;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Realtime Chat</h1>
+
+    <ul id="messages"></ul>
+
+    <form id="form">
+        <input id="name" autocomplete="off" placeholder="Your name" />
+        <input id="m" autocomplete="off" placeholder="Type a message" />
+        <button>Send</button>
+    </form>
+
+    <!-- Socket.IO client from CDN -->
+    <script src="https://cdn.socket.io/4.7.2/socket.io.min.js"></script>
+    <script src="/client.js"></script>
+</body>
+
+</html>
