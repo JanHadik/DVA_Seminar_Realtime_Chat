@@ -75,4 +75,27 @@
     appendMessage({ name: 'System', message: `${data.name} left` });
   });
 
+   // ===== theme toggle (light/dark) =====
+  const root = document.documentElement;
+  const themeBtn = document.getElementById("themeToggle");
+
+  if (themeBtn) {
+    const stored = localStorage.getItem("theme");
+    const prefersDark = window.matchMedia?.("(prefers-color-scheme: dark)")?.matches;
+
+    root.dataset.theme = stored || (prefersDark ? "dark" : "light");
+
+    const syncIcon = () => {
+      themeBtn.textContent = root.dataset.theme === "dark" ? "☀️" : "🌙";
+    };
+
+    themeBtn.addEventListener("click", () => {
+      root.dataset.theme = root.dataset.theme === "dark" ? "light" : "dark";
+      localStorage.setItem("theme", root.dataset.theme);
+      syncIcon();
+    });
+
+    syncIcon();
+  }
+
 })();
