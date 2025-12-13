@@ -58,6 +58,98 @@ h1 {
 }
 
 /* ===== Layout ===== */
+.main-layout {
+  display: grid;
+  grid-template-columns: 240px 1fr;
+  gap: 0;
+  height: 100vh;
+}
+
+.sidebar {
+  background: var(--surface);
+  border-right: 1px solid var(--border);
+  padding: 18px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.sidebar h2 {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 650;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--muted);
+}
+
+.rooms-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.room-btn {
+  text-align: left;
+  padding: 10px 12px;
+  border: 1px solid var(--border);
+  background: var(--bg);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-size: 14px;
+}
+
+.room-btn:hover {
+  border-color: color-mix(in srgb, var(--primary) 50%, var(--border));
+  background: color-mix(in srgb, var(--primary) 8%, var(--bg));
+}
+
+.room-btn.active {
+  background: var(--primary);
+  color: var(--primary-ink);
+  border-color: var(--primary);
+  font-weight: 600;
+}
+
+.create-room-section {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding-top: 10px;
+  border-top: 1px solid var(--border);
+}
+
+.create-room-section input {
+  padding: 10px 12px;
+  font-size: 13px;
+}
+
+.create-room-section button {
+  padding: 10px 12px;
+  background: color-mix(in srgb, var(--primary) 12%, var(--bg));
+  border: 1px solid color-mix(in srgb, var(--primary) 30%, var(--border));
+  border-radius: 8px;
+  color: var(--primary);
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 13px;
+  transition: all 0.2s;
+}
+
+.create-room-section button:hover {
+  background: color-mix(in srgb, var(--primary) 20%, var(--bg));
+  border-color: color-mix(in srgb, var(--primary) 50%, var(--border));
+}
+
+.chat-container {
+  display: flex;
+  flex-direction: column;
+  padding: 18px;
+  overflow: hidden;
+}
+
 .container {
   max-width: 760px;
   margin: 0 auto;
@@ -71,8 +163,8 @@ h1 {
   background: var(--surface);
   border: 1px solid var(--border);
   border-radius: var(--radius);
-  max-height: 62vh;
-  overflow: auto;
+  flex: 1;
+  overflow-y: auto;
   box-shadow: var(--shadow);
 }
 
@@ -104,6 +196,17 @@ input, button {
   outline: none;
 }
 #m::placeholder, #loginName::placeholder { color: color-mix(in srgb, var(--muted) 85%, transparent); }
+
+#loginRoom {
+  width: 100%;
+  padding: 10px 12px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  outline: none;
+  font-size: inherit;
+  color: inherit;
+}
 
 #m:focus, #loginName:focus {
   border-color: color-mix(in srgb, var(--primary) 55%, var(--border));
@@ -167,6 +270,20 @@ button:active { transform: translateY(1px); }
   margin: 0 0 10px 0;
   font-size: 16px;
   font-weight: 650;
+}
+
+.login-box form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.login-box label {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  margin-bottom: 4px;
+  color: var(--text);
 }
 
 .login-actions {

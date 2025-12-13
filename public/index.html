@@ -9,25 +9,46 @@
 </head>
 
 <body>
-    <header class="topbar">
-        <h1>Realtime Chat</h1>
-        <button id="themeToggle" type="button" aria-label="Toggle theme">🌙</button>
-    </header>
+    <div class="main-layout">
+        <!-- Sidebar with rooms -->
+        <aside id="sidebar" class="sidebar">
+            <h2>Rooms</h2>
+            <div id="roomsList" class="rooms-list"></div>
+            <div class="create-room-section">
+                <input id="createRoomInput" type="text" placeholder="New room name" autocomplete="off" />
+                <button id="createRoomBtn" type="button">+ Create</button>
+            </div>
+        </aside>
 
+        <!-- Main chat area -->
+        <div class="chat-container">
+            <header class="topbar">
+                <h1 id="roomName">Realtime Chat</h1>
+                <button id="themeToggle" type="button" aria-label="Toggle theme">🌙</button>
+            </header>
 
-    <ul id="messages"></ul>
+            <ul id="messages"></ul>
 
-    <form id="form">
-        <input id="m" autocomplete="off" placeholder="Type a message" />
-        <button>Send</button>
-    </form>
+            <form id="form">
+                <input id="m" autocomplete="off" placeholder="Type a message" />
+                <button type="submit">Send</button>
+            </form>
+        </div>
+    </div>
 
-    <!-- Simple login overlay shown until user chooses a unique name -->
+    <!-- Simple login overlay shown until user chooses a unique name and room -->
     <div id="loginOverlay">
         <div class="login-box">
             <h2>Join Chat</h2>
             <form id="loginForm">
+                <label for="loginRoom">Select Room:</label>
+                <select id="loginRoom">
+                    <option value="General">General</option>
+                </select>
+
+                <label for="loginName">Your Name:</label>
                 <input id="loginName" autocomplete="off" placeholder="Enter a unique name" />
+
                 <div class="login-actions">
                     <button type="submit">Join</button>
                 </div>
