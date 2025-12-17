@@ -3,7 +3,10 @@
 
 <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="theme-color" content="#2563eb" />
     <title>Realtime Chat</title>
     <link rel="stylesheet" href="/styles.css">
 </head>
@@ -12,7 +15,10 @@
     <div class="main-layout">
         <!-- Sidebar with rooms -->
         <aside id="sidebar" class="sidebar">
-            <h2>Rooms</h2>
+            <div class="sidebar-header">
+                <h2>Rooms</h2>
+                <button id="closeSidebarBtn" class="close-sidebar" aria-label="Close sidebar">✕</button>
+            </div>
             <div id="roomsList" class="rooms-list"></div>
             <div class="create-room-section">
                 <input id="createRoomInput" type="text" placeholder="New room name" autocomplete="off" />
@@ -23,6 +29,7 @@
         <!-- Main chat area -->
         <div class="chat-container">
             <header class="topbar">
+                <button id="openSidebarBtn" class="menu-btn" aria-label="Toggle menu">☰</button>
                 <h1 id="roomName">Realtime Chat</h1>
                 <button id="themeToggle" type="button" aria-label="Toggle theme">🌙</button>
             </header>

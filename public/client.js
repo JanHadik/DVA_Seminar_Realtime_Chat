@@ -17,6 +17,9 @@
   const roomName = document.getElementById('roomName');
   const createRoomBtn = document.getElementById('createRoomBtn');
   const createRoomInput = document.getElementById('createRoomInput');
+  const sidebar = document.getElementById('sidebar');
+  const openSidebarBtn = document.getElementById('openSidebarBtn');
+  const closeSidebarBtn = document.getElementById('closeSidebarBtn');
 
   // login elements
   const loginOverlay = document.getElementById('loginOverlay');
@@ -28,6 +31,38 @@
   let currentName = null;
   let currentRoom = null;
   let roomList = [];
+
+  // Mobile sidebar toggle
+  function openSidebar() {
+    sidebar.classList.add('open');
+  }
+
+  function closeSidebar() {
+    sidebar.classList.remove('open');
+  }
+
+  openSidebarBtn.addEventListener('click', openSidebar);
+  closeSidebarBtn.addEventListener('click', closeSidebar);
+
+  // Close sidebar when clicking a room on mobile
+  function addRoomClickHandler() {
+    roomsList.querySelectorAll('.room-btn').forEach((btn) => {
+      btn.addEventListener('click', (e) => {
+        const selectedRoom = btn.dataset.room;
+        closeSidebar();
+        if (selectedRoom !== currentRoom) {
+          switchRoom(selectedRoom);
+        }
+      });
+    });
+  }
+
+  // Close sidebar on small screens when message sent
+  form.addEventListener('submit', (e) => {
+    if (window.innerWidth <= 768) {
+      closeSidebar();
+    }
+  });
 
   function getRoomList() {
     return roomList;
@@ -73,14 +108,7 @@
         .join('');
 
       // Attach click handlers
-      roomsList.querySelectorAll('.room-btn').forEach((btn) => {
-        btn.addEventListener('click', () => {
-          const selectedRoom = btn.dataset.room;
-          if (selectedRoom !== currentRoom) {
-            switchRoom(selectedRoom);
-          }
-        });
-      });
+      addRoomClickHandler();
     }
   }
 

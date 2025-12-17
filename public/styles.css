@@ -298,3 +298,196 @@ button:active { transform: translateY(1px); }
   display: none;
   font-size: 13px;
 }
+
+/* ===== Mobile optimizations ===== */
+.menu-btn, .close-sidebar {
+  display: none;
+  background: transparent;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  padding: 4px 8px;
+  color: var(--text);
+}
+
+.sidebar-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.sidebar-header h2 {
+  flex: 1;
+  margin: 0;
+}
+
+@media (max-width: 768px) {
+  .main-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .sidebar {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 75vw;
+    max-width: 280px;
+    height: 100vh;
+    z-index: 1000;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease-out;
+    box-shadow: 2px 0 12px rgba(0, 0, 0, 0.2);
+  }
+
+  .sidebar.open {
+    transform: translateX(0);
+  }
+
+  .menu-btn, .close-sidebar {
+    display: block;
+  }
+
+  .chat-container {
+    padding: 12px;
+  }
+
+  h1 {
+    font-size: 16px;
+  }
+
+  #messages li {
+    padding: 8px 10px;
+    font-size: 13px;
+  }
+
+  #form {
+    gap: 8px;
+  }
+
+  #m, #form button {
+    padding: 10px 10px;
+    font-size: 16px;
+  }
+
+  #form button {
+    min-width: 50px;
+    padding: 10px 8px;
+  }
+
+  .create-room-section {
+    padding-top: 8px;
+    gap: 6px;
+  }
+
+  .create-room-section input,
+  .create-room-section button {
+    font-size: 13px;
+    padding: 8px 10px;
+  }
+
+  .room-btn {
+    padding: 8px 10px;
+    font-size: 13px;
+  }
+
+  .login-box {
+    width: min(95vw, 380px);
+    padding: 16px;
+    border-radius: 8px;
+  }
+
+  .login-box h2 {
+    font-size: 18px;
+    margin: 0 0 12px 0;
+  }
+
+  .login-box label {
+    font-size: 12px;
+  }
+
+  .login-box input,
+  .login-box select {
+    font-size: 16px !important;
+    padding: 10px 12px;
+  }
+
+  .login-actions button {
+    font-size: 14px;
+    padding: 10px 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .sidebar {
+    width: 85vw;
+  }
+
+  .topbar {
+    gap: 8px;
+  }
+
+  h1 {
+    font-size: 14px;
+  }
+
+  #messages li {
+    padding: 6px 8px;
+    font-size: 12px;
+  }
+
+  .menu-btn, .close-sidebar {
+    font-size: 18px;
+  }
+
+  .room-btn {
+    padding: 6px 8px;
+    font-size: 12px;
+  }
+
+  #createRoomInput {
+    font-size: 14px;
+  }
+
+  .login-box {
+    width: 95vw;
+    padding: 14px;
+  }
+
+  .login-box h2 {
+    font-size: 16px;
+  }
+
+  .login-box form {
+    gap: 8px;
+  }
+
+  #m {
+    font-size: 16px;
+  }
+}
+
+/* Prevent viewport zoom on input focus (iOS) */
+input, select, textarea {
+  font-size: 16px;
+}
+
+/* Smooth scrolling for messages */
+#messages {
+  scroll-behavior: smooth;
+}
+
+/* Ensure buttons are touch-friendly */
+button, input, select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  min-height: 44px;
+}
+
+/* Prevent text selection on UI elements */
+.menu-btn, .close-sidebar, .room-btn, #themeToggle, #createRoomBtn, #form button {
+  -webkit-user-select: none;
+  user-select: none;
+  -webkit-touch-callout: none;
+}
